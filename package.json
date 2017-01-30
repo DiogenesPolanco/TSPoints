@@ -3,6 +3,7 @@
     "displayName": "tspoints",
     "description": "10 important points to learn TypeScript step by step and guided way from vscode",
     "version": "0.0.1",
+    "icon": "images/icon.png",
     "publisher": "diogenespolanco",
     "engines": {
         "vscode": "^1.5.0"

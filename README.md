@@ -2,6 +2,8 @@
 
 This extension arises to auto help new typescript developers, through challenges, assignments and examples to guide them to understand more about typescript.
 
+![](https://github.com/DiogenesPolanco/TSPoints/raw/master/images/screendemo.gif)
+
 ## Requirements
 
 If you have any requirements or dependencies, add a section describing those and how to install and configure them.
@@ -18,5 +20,13 @@ This extension contributes the following settings:
 * `TSPoints.thing`: set to `blah` to do something
 
 -----------------------------------------------------------------------------------------------------------
+## Installation
+
+1. Install Visual Studio Code 1.5.0 or higher
+2. Launch Code
+3. From the command palette `Ctrl`-`Shift`-`P` (Windows, Linux) or `Cmd`-`Shift`-`P` (OSX)
+4. Select `Install Extension`
+5. Type `TSPoints` and press enter
+6. Reload Visual Studio Code
 
 **Enjoy!**
