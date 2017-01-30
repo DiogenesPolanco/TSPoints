@@ -7,9 +7,9 @@ This extension arises to auto help new typescript developers, through challenges
 ## Requirements
 
 
-* `Install [NodeJS](https://nodejs.org/en/download/)`
-* `Install [TypeScript](https://www.typescriptlang.org/index.html#download-links)`
-* `Install [VSCode](https://code.visualstudio.com/download)`
+* Install [NodeJS](https://nodejs.org/en/download/)
+* Install [TypeScript](https://www.typescriptlang.org/index.html#download-links)
+* Install [VSCode](https://code.visualstudio.com/download)
 
 ## Extension Settings
 
