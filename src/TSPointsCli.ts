@@ -21,7 +21,8 @@ export class TSPointsCli {
     }
     else {
       if (!window.activeTextEditor) {
-        deferred.reject('Please open a file first.. or just right-click on a file/folder and use the context menu!');
+        deferred.reject('Before starting you must install a nodeJs, run npm init in the terminal and open package.json!');
+        window.createTerminal("TSPoints").show();
         return deferred.promise;
       } else {
         clickedFolderPath = path.dirname(window.activeTextEditor.document.fileName);
@@ -260,6 +261,39 @@ export class TSPointsCli {
       {
         name: path.join(loc.dirPath, `${loc.fileName}.ts`),
         content: this.fc.classContent(loc.fileName)
+      }
+    ];
+
+    await this.createFiles(loc, files);
+  }
+    public generateFunction = async (loc: IPath) => {
+    // create an IFiles array including file names and contents
+    var files: IFiles[] = [
+      {
+        name: path.join(loc.dirPath, `${loc.fileName}.ts`),
+        content: this.fc.functionContent(loc.fileName)
+      }
+    ];
+
+    await this.createFiles(loc, files);
+  }
+    public generateReadme = async (loc: IPath) => {
+    // create an IFiles array including file names and contents
+    var files: IFiles[] = [
+      {
+        name: path.join(loc.dirPath, `README.md`),
+        content: this.fc.readmeContent(loc.fileName)
+      }
+    ];
+
+    await this.createFiles(loc, files);
+  }
+      public generateReadmeTwo = async (loc: IPath) => {
+    // create an IFiles array including file names and contents
+    var files: IFiles[] = [
+      {
+        name: path.join(loc.dirPath, `README.md`),
+        content: this.fc.readmeContentCompile(loc.fileName)
       }
     ];
 

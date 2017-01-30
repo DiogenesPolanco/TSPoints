@@ -13,8 +13,16 @@ export function InstallingTypeScript(args): void {
     vscode.window.showInputBox({
         prompt: promptName
     })
-        .then(function (newDevname) { 
-            vscode.window.showInformationMessage('Welcome ' + newDevname);  
-
+        .then(function (newDevname) {
+            tspointsCli.showFileNameDialog(args, "Just follow the README instructions", newDevname)
+                .then((loc) => {
+                    tspointsCli.generateReadme(loc);
+                    vscode.window.showInformationMessage('Welcome ' + newDevname);
+                })
+                .catch((err) => {
+                    if (err) {
+                        window.showErrorMessage(err);
+                    }
+                });
         });
 }
