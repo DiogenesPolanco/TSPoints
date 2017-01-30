@@ -2,7 +2,7 @@
     "name": "tspoints",
     "displayName": "tspoints",
     "description": "10 important points to learn TypeScript step by step and guided way from vscode",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "icon": "images/icon.png",
     "publisher": "diogenespolanco",
     "engines": {
@@ -25,37 +25,48 @@
     ],
     "main": "./out/src/TSPoints",
     "contributes": {
-        "commands": [{
-            "command": "extension.tspoints.StepOne",
-            "title": "TSPoints Step One - Installing TypeScript"
-        }, {
-            "command": "extension.tspoints.StepTwo",
-            "title": "TSPoints Step Two - Compiling to JavaScript"
-        }, {
-            "command": "extension.tspoints.StepThree",
-            "title": "TSPoints Step Three - Static Typing"
-        }, {
-            "command": "extension.tspoints.StepFour",
-            "title": "TSPoints Step Four - Interfaces"
-        }, {
-            "command": "extension.tspoints.StepFive",
-            "title": "TSPoints Step Five - Classes"
-        }, {
-            "command": "extension.tspoints.StepSix",
-            "title": "TSPoints Step Six - Generics"
-        }, {
-            "command": "extension.tspoints.StepSeven",
-            "title": "TSPoints Step Seven - Modules"
-        }, {
-            "command": "extension.tspoints.StepEight",
-            "title": "TSPoints Step Eight - Third-party Declaration Files"
-        }, {
-            "command": "extension.tspoints.StepNine",
-            "title": "TSPoints Step Nine - New Features"
-        }, {
-            "command": "extension.tspoints.StepTen",
-            "title": "TSPoints Step Ten - Final challenge"
-        }]
+        "commands": [
+            {
+                "command": "extension.tspoints.StepOne",
+                "title": "TSPoints Step One - Installing TypeScript"
+            },
+            {
+                "command": "extension.tspoints.StepTwo",
+                "title": "TSPoints Step Two - Compiling to JavaScript"
+            },
+            {
+                "command": "extension.tspoints.StepThree",
+                "title": "TSPoints Step Three - Static Typing"
+            },
+            {
+                "command": "extension.tspoints.StepFour",
+                "title": "TSPoints Step Four - Interfaces"
+            },
+            {
+                "command": "extension.tspoints.StepFive",
+                "title": "TSPoints Step Five - Classes"
+            },
+            {
+                "command": "extension.tspoints.StepSix",
+                "title": "TSPoints Step Six - Generics"
+            },
+            {
+                "command": "extension.tspoints.StepSeven",
+                "title": "TSPoints Step Seven - Modules"
+            },
+            {
+                "command": "extension.tspoints.StepEight",
+                "title": "TSPoints Step Eight - Third-party Declaration Files"
+            },
+            {
+                "command": "extension.tspoints.StepNine",
+                "title": "TSPoints Step Nine - New Features"
+            },
+            {
+                "command": "extension.tspoints.StepTen",
+                "title": "TSPoints Step Ten - Final challenge"
+            }
+        ]
     },
     "scripts": {
         "vscode:prepublish": "tsc -p ./",
