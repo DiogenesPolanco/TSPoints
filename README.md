@@ -6,7 +6,10 @@ This extension arises to auto help new typescript developers, through challenges
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+
+* `Install [NodeJS](https://nodejs.org/en/download/)`
+* `Install [TypeScript](https://www.typescriptlang.org/index.html#download-links)`
+* `Install [VSCode](https://code.visualstudio.com/download)`
 
 ## Extension Settings
 
