@@ -1,0 +1,76 @@
+{
+    "name": "tspoints",
+    "displayName": "tspoints",
+    "description": "10 important points to learn TypeScript step by step and guided way from vscode",
+    "version": "0.0.1",
+    "publisher": "diogenespolanco",
+    "engines": {
+        "vscode": "^1.5.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onCommand:extension.tspoints.StepOne",
+        "onCommand:extension.tspoints.StepTwo",
+        "onCommand:extension.tspoints.StepThree",
+        "onCommand:extension.tspoints.StepFour",
+        "onCommand:extension.tspoints.StepFive",
+        "onCommand:extension.tspoints.StepSix",
+        "onCommand:extension.tspoints.StepSeven",
+        "onCommand:extension.tspoints.StepEight",
+        "onCommand:extension.tspoints.StepNine",
+        "onCommand:extension.tspoints.StepTen"
+    ],
+    "main": "./out/src/TSPoints",
+    "contributes": {
+        "commands": [{
+            "command": "extension.tspoints.StepOne",
+            "title": "TSPoints Step One - Installing TypeScript"
+        }, {
+            "command": "extension.tspoints.StepTwo",
+            "title": "TSPoints Step Two - Compiling to JavaScript"
+        }, {
+            "command": "extension.tspoints.StepThree",
+            "title": "TSPoints Step Three - Static Typing"
+        }, {
+            "command": "extension.tspoints.StepFour",
+            "title": "TSPoints Step Four - Interfaces"
+        }, {
+            "command": "extension.tspoints.StepFive",
+            "title": "TSPoints Step Five - Classes"
+        }, {
+            "command": "extension.tspoints.StepSix",
+            "title": "TSPoints Step Six - Generics"
+        }, {
+            "command": "extension.tspoints.StepSeven",
+            "title": "TSPoints Step Seven - Modules"
+        }, {
+            "command": "extension.tspoints.StepEight",
+            "title": "TSPoints Step Eight - Third-party Declaration Files"
+        }, {
+            "command": "extension.tspoints.StepNine",
+            "title": "TSPoints Step Nine - New Features"
+        }, {
+            "command": "extension.tspoints.StepTen",
+            "title": "TSPoints Step Ten - Final challenge"
+        }]
+    },
+    "scripts": {
+        "vscode:prepublish": "tsc -p ./",
+        "compile": "tsc -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "node ./node_modules/vscode/bin/test"
+    },
+    "devDependencies": {
+        "typescript": "^2.0.3",
+        "rimraf": "^2.4.4",
+        "vscode": "^1.0.0",
+        "mocha": "^2.3.3",
+        "@types/node": "^6.0.40",
+        "@types/mocha": "^2.2.32"
+    },
+    "dependencies": {
+        "q": "^1.4.1"
+    }
+}
