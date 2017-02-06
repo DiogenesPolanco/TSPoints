@@ -289,6 +289,19 @@ export class TSPointsCli {
 
     await this.createFiles(loc, files);
   }
+
+    public generateInterfaces = async (loc: IPath) => {
+    // create an IFiles array including file names and contents
+    var files: IFiles[] = [
+      {
+        name: path.join(loc.dirPath, `${loc.fileName}.ts`),
+        content: this.fc.interfacesContent(loc.fileName)
+      }
+    ];
+
+    await this.createFiles(loc, files);
+  }
+
     public generateReadme = async (loc: IPath) => {
     // create an IFiles array including file names and contents
     var files: IFiles[] = [
@@ -322,12 +335,23 @@ export class TSPointsCli {
 
     await this.createFiles(loc, files);
   }
+     public generateReadmeFour = async (loc: IPath) => {
+    // create an IFiles array including file names and contents
+    var files: IFiles[] = [
+      {
+        name: path.join(loc.dirPath, `README.md`),
+        content: this.fc.readmeContentInterfaces(loc.fileName)
+      }
+    ];
+
+    await this.createFiles(loc, files);
+  }
   public generateInterface = async (loc: IPath) => {
     // create an IFiles array including file names and contents
     var files: IFiles[] = [
       {
         name: path.join(loc.dirPath, `${loc.fileName}.ts`),
-        content: this.fc.interfaceContent(loc.fileName)
+        content: this.fc.interfacesContent(loc.fileName)
       }
     ];
 

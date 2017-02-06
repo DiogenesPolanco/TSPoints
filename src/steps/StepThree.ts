@@ -2,11 +2,10 @@ import vscode = require('vscode');
 import { ExtensionContext, commands, window, workspace } from 'vscode';
 import { TSPointsCli } from '../TSPointsCli';
 
-
 var promptName = 'What is your favorite hamburger:';
  
 export function StaticTyping(args): void {
-     let tspointsCli = new TSPointsCli();
+    let tspointsCli = new TSPointsCli();
     if (!vscode.workspace.rootPath) {
         vscode.window.showErrorMessage('TSPoints can only be generated if VS Code is opened on a folder.');
         return;
