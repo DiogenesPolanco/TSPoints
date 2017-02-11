@@ -15,7 +15,10 @@ export function Classes(args): void {
     })
         .then(function (newObjectname) {
             tspointsCli.showFileNameDialog(args, "You will have to create a class in the Step Five", newObjectname)
-                .then((loc) => tspointsCli.generateClass(loc))
+                .then((loc) => {
+                    tspointsCli.generateClass(loc);
+                     tspointsCli.generateReadmeFive(loc);
+                } )
                 .catch((err) => {
                     if (err) {
                         window.showErrorMessage(err);

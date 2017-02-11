@@ -66,6 +66,8 @@ var sample${upperName} = {
 }
 
 eat(sample${upperName});
+
+
 `;
         return content;
     }
@@ -85,7 +87,33 @@ Main("${upperName}");
         let upperName = this.toUpperCase(inputName);
 
         var content: string = `export class ${upperName} {
-}`;
+  // Our properties:
+  // By default they are public, but can also be private or protected.
+  characteristics: Array<string>;  // The characteristics in the ${upperName}, an array of strings.
+  colors: number;         // How many colors will the ${upperName} be, a number.
+
+  // A straightforward constructor. 
+  constructor(characteristic_list: Array<string>, total_colors: number) {
+    // The this keyword is mandatory.
+    this.characteristics = characteristic_list;    
+    this.colors = total_colors;
+  }
+
+  // Methods
+  list(): void {
+    console.log("Your ${upperName} has the following characteristics:");
+    for(var i=0; i<this.characteristics.length; i++) {
+      console.log(this.characteristics[i]);
+    }
+  }
+
+} 
+
+// You have to create a new instance of the ${upperName} class. 
+
+// And call the list method. 
+
+`;
         return content;
     }
     public readmeContent(inputName: string): string {
@@ -149,7 +177,41 @@ node ${inputName}.js
 `;
         return content;
     } 
+ public readmeContentClass(inputName: string): string {
 
+        var content: string = `
+### Previous step One
+1. npm install -g typescript
+2. tsc -v
+
+###  Previous step Two
+
+#### The following command takes a TypeScript file named ${inputName}.ts and translates it into its JavaScript version ${inputName}.js. If ${inputName}.js already exists it will be overwritten.
+tsc ${inputName}.ts   
+
+#### Will result in separate .js files: ${inputName}.js other.js.
+tsc ${inputName}.ts other.ts    
+
+#### Compiles all .ts files in the current folder. Does NOT work recursively.
+tsc *.ts 
+
+#### If you complete StepOne, you can run your simple ${inputName} example by opening up a terminal and running:
+node ${inputName}.js
+
+###  Previous step Three
+1. Find the bug in ${inputName}.ts and solve it
+2. Compile the file ${inputName}.ts   
+3. Run node ${inputName}.js
+
+###  Previous step Four
+1. Learn how to use typescript interfaces
+
+### Working with class
+Just open the ${inputName}.ts and follow the commented instructions at the end of ${inputName}.ts.
+
+`;
+        return content;
+    } 
      public readmeContentInterfaces(inputName: string): string {
 
         var content: string = `
@@ -176,6 +238,8 @@ node ${inputName}.js
 2. Compile the file ${inputName}.ts   
 3. Run node ${inputName}.js
 
+### Learn how to use typescript interfaces
+1. Check the ${inputName}.ts and modify the interface.
 
 `;
         return content;

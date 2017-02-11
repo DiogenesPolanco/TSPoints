@@ -335,6 +335,17 @@ export class TSPointsCli {
 
     await this.createFiles(loc, files);
   }
+  public generateReadmeFive = async (loc: IPath) => {
+    // create an IFiles array including file names and contents
+    var files: IFiles[] = [
+      {
+        name: path.join(loc.dirPath, `README.md`),
+        content: this.fc.readmeContentClass(loc.fileName)
+      }
+    ];
+
+    await this.createFiles(loc, files);
+  }
      public generateReadmeFour = async (loc: IPath) => {
     // create an IFiles array including file names and contents
     var files: IFiles[] = [
