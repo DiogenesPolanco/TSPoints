@@ -2,7 +2,7 @@
     "name": "tspoints",
     "displayName": "tspoints",
     "description": "10 important points to learn TypeScript step by step and guided way from vscode",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "icon": "images/icon.png",
     "publisher": "diogenespolanco",
     "engines": {
