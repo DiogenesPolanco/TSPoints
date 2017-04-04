@@ -14,7 +14,7 @@ export function CompilingTypeScript(args): void {
         prompt: promptName
     })
         .then(function (newDevname) {
-            tspointsCli.showFileNameDialog(args, "Just follow the README instructions", newDevname)
+            tspointsCli.showFileNameDialog(args, "Just follow the README instructions", tspointsCli.trim(newDevname))
                 .then((loc) => {
                     tspointsCli.generateFunction(loc);
                     tspointsCli.generateReadmeTwo(loc);

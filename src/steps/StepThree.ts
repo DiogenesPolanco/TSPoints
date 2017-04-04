@@ -14,7 +14,7 @@ export function StaticTyping(args): void {
         prompt: promptName
     })
         .then(function (newDevname) {
-            tspointsCli.showFileNameDialog(args, "Just follow the README instructions", newDevname)
+            tspointsCli.showFileNameDialog(args, "Just follow the README instructions", tspointsCli.trim(newDevname))
                 .then((loc) => {
                     tspointsCli.generateStaticTyping(loc);
                     tspointsCli.generateReadmeThree(loc);

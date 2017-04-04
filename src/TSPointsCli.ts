@@ -1,4 +1,4 @@
-import { IPath } from './settings/path'; 
+import { IPath } from './settings/path';
 import { window, workspace, TextEditor } from 'vscode';
 import { FileContents } from './settings/file-contents';
 import { IFiles } from './settings/file';
@@ -10,9 +10,13 @@ import * as vscode from 'vscode';
 export class TSPointsCli {
   private fc = new FileContents();
 
+  public trim(string) {
+    return string.split(' ').join('');
+  }
+
   // Show input prompt for folder name 
   // The imput is also used to create the files with the respective name as defined in the Angular2 style guide [https://angular.io/docs/ts/latest/guide/style-guide.html] 
-  public showFileNameDialog(args, type, defaultTypeName) : Q.Promise<IPath> {
+  public showFileNameDialog(args, type, defaultTypeName): Q.Promise<IPath> {
     const deferred: Q.Deferred<IPath> = Q.defer<IPath>();
 
     var clickedFolderPath: string;
@@ -220,7 +224,7 @@ export class TSPointsCli {
 
     //at least one module is there
     if (moduleFiles.length > 0) {
-      moduleFiles.sort((a:string, b:string) => a.length - b.length);
+      moduleFiles.sort((a: string, b: string) => a.length - b.length);
 
       //find closest module      
       let module = moduleFiles[0];
@@ -254,7 +258,7 @@ export class TSPointsCli {
       });
     }
   }
- 
+
   public generateClass = async (loc: IPath) => {
     // create an IFiles array including file names and contents
     var files: IFiles[] = [
@@ -266,7 +270,18 @@ export class TSPointsCli {
 
     await this.createFiles(loc, files);
   }
-    public generateFunction = async (loc: IPath) => {
+  public generateGeneric = async (loc: IPath) => {
+    // create an IFiles array including file names and contents
+    var files: IFiles[] = [
+      {
+        name: path.join(loc.dirPath, `${loc.fileName}.ts`),
+        content: this.fc.genericContent(loc.fileName)
+      }
+    ];
+
+    await this.createFiles(loc, files);
+  }
+  public generateFunction = async (loc: IPath) => {
     // create an IFiles array including file names and contents
     var files: IFiles[] = [
       {
@@ -290,7 +305,7 @@ export class TSPointsCli {
     await this.createFiles(loc, files);
   }
 
-    public generateInterfaces = async (loc: IPath) => {
+  public generateInterfaces = async (loc: IPath) => {
     // create an IFiles array including file names and contents
     var files: IFiles[] = [
       {
@@ -302,7 +317,7 @@ export class TSPointsCli {
     await this.createFiles(loc, files);
   }
 
-    public generateReadme = async (loc: IPath) => {
+  public generateReadme = async (loc: IPath) => {
     // create an IFiles array including file names and contents
     var files: IFiles[] = [
       {
@@ -313,7 +328,7 @@ export class TSPointsCli {
 
     await this.createFiles(loc, files);
   }
-      public generateReadmeTwo = async (loc: IPath) => {
+  public generateReadmeTwo = async (loc: IPath) => {
     // create an IFiles array including file names and contents
     var files: IFiles[] = [
       {
@@ -324,7 +339,7 @@ export class TSPointsCli {
 
     await this.createFiles(loc, files);
   }
-   public generateReadmeThree = async (loc: IPath) => {
+  public generateReadmeThree = async (loc: IPath) => {
     // create an IFiles array including file names and contents
     var files: IFiles[] = [
       {
@@ -335,6 +350,18 @@ export class TSPointsCli {
 
     await this.createFiles(loc, files);
   }
+  public generateReadmeSix = async (loc: IPath) => {
+    // create an IFiles array including file names and contents
+    var files: IFiles[] = [
+      {
+        name: path.join(loc.dirPath, `README.md`),
+        content: this.fc.readmeContentGenerics(loc.fileName)
+      }
+    ];
+
+    await this.createFiles(loc, files);
+  }
+
   public generateReadmeFive = async (loc: IPath) => {
     // create an IFiles array including file names and contents
     var files: IFiles[] = [
@@ -346,7 +373,7 @@ export class TSPointsCli {
 
     await this.createFiles(loc, files);
   }
-     public generateReadmeFour = async (loc: IPath) => {
+  public generateReadmeFour = async (loc: IPath) => {
     // create an IFiles array including file names and contents
     var files: IFiles[] = [
       {
@@ -368,7 +395,7 @@ export class TSPointsCli {
 
     await this.createFiles(loc, files);
   }
-   
+
   public generateEnum = async (loc: IPath) => {
     // create an IFiles array including file names and contents
     var files: IFiles[] = [
@@ -380,5 +407,5 @@ export class TSPointsCli {
 
     await this.createFiles(loc, files);
   }
-  
+
 }

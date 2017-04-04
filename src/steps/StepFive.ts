@@ -14,7 +14,7 @@ export function Classes(args): void {
         prompt: promptName
     })
         .then(function (newObjectname) {
-            tspointsCli.showFileNameDialog(args, "You will have to create a class in the Step Five", newObjectname)
+            tspointsCli.showFileNameDialog(args, "You will have to create a class in the Step Five", tspointsCli.trim(newObjectname))
                 .then((loc) => {
                     tspointsCli.generateClass(loc);
                      tspointsCli.generateReadmeFive(loc);
