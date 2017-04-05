@@ -83,6 +83,42 @@ Main("${upperName}");
 `;
         return content;
     }
+    public moduleContentSample(inputName: string): string {
+        let upperName = this.toUpperCase(inputName);
+
+        var content: string = `
+//Import the module you generated to use it with the name validator
+let myValidator = new validator.${upperName}Validator();
+//Use the test method and print the test result on the screen.
+`;
+        return content;
+    }
+    public moduleContent(inputName: string): string {
+        let upperName = this.toUpperCase(inputName);
+
+        var content: string = `
+export interface StringValidator {
+    isAcceptable(s: string): boolean;
+}
+export const numberRegexp = /^[0-9]+$/;
+ 
+class ${upperName}Validator implements StringValidator {
+    isAcceptable(s: string) {
+        return s.length === 5 && numberRegexp.test(s);
+    }
+}
+export { ${upperName}Validator };
+// other : export { ${upperName}Validator as mainValidator };
+
+//You have to study how this validator works and open the ${inputName}Test.ts file to encode that test. where you can import these validations and use them as follows:
+/*
+import * as validator from "./${inputName}";  
+*/
+//Do not forget to transpile the files before testing them.
+`;
+        return content;
+    }
+
     public genericContent(inputName: string): string {
         let upperName = this.toUpperCase(inputName);
 
@@ -198,6 +234,47 @@ node ${inputName}.js
 1. Find the bug in ${inputName}.ts and solve it
 2. Compile the file ${inputName}.ts   
 3. node ${inputName}.js
+
+`;
+        return content;
+    }
+      public readmeContentModules(inputName: string): string {
+
+        var content: string = `
+### Previous step One
+1. npm install -g typescript
+2. tsc -v
+
+###  Previous step Two
+
+#### The following command takes a TypeScript file named ${inputName}.ts and translates it into its JavaScript version ${inputName}.js. If ${inputName}.js already exists it will be overwritten.
+tsc ${inputName}.ts   
+
+#### Will result in separate .js files: ${inputName}.js other.js.
+tsc ${inputName}.ts other.ts    
+
+#### Compiles all .ts files in the current folder. Does NOT work recursively.
+tsc *.ts 
+
+#### If you complete StepOne, you can run your simple ${inputName} example by opening up a terminal and running:
+node ${inputName}.js
+
+###  Previous step Three
+1. Find the bug in ${inputName}.ts and solve it
+2. Compile the file ${inputName}.ts   
+3. Run node ${inputName}.js
+
+###  Previous step Four
+Learn how to use typescript interfaces
+
+###  Previous step Five
+Using classes for Learn typescript OOP
+
+###  Previous step Six
+Using generics is better than using the any data type
+
+### Another important concept when working on large apps is modularity. 
+Just open the ${inputName}.ts and follow the commented instructions at the end of ${inputName}.ts.
 
 `;
         return content;
