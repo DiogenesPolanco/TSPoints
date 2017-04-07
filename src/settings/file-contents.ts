@@ -83,6 +83,37 @@ Main("${upperName}");
 `;
         return content;
     }
+      public typingContentImpl(inputName: string): string {
+        let upperName = this.toUpperCase(inputName);
+        let lowerName = this.toLowerCase(inputName);
+
+        var content: string = ` 
+export class Extended${upperName} implements ${lowerName}.I${upperName} {
+    private subscribers = [];
+    constructor() {
+        
+    }
+
+    public on(eventName: string, cb: (data?: any) => void) {
+        this.subscribers.push({
+            eventName: eventName,
+            cb: cb
+        })
+    }
+
+    public trigger(eventName: string, data?: any) {
+        this.subscribers
+            .filter(function (subscriber) {
+                return subscriber.eventName === eventName
+            })
+            .forEach(function (subscriber) {
+                subscriber.cb(data)
+            })
+    }
+}
+`;
+        return content;
+    }
     public moduleContentSample(inputName: string): string {
         let upperName = this.toUpperCase(inputName);
 
@@ -118,7 +149,41 @@ import * as validator from "./${inputName}";
 `;
         return content;
     }
+     public typingContentDecl(inputName: string): string {
+        let upperName = this.toUpperCase(inputName);
+        let lowerName = this.toLowerCase(inputName);
 
+        var content: string = ` 
+declare namespace ${lowerName} {
+    export interface I${upperName} {
+        on: (eventName: string, cb: (data?: any) => void) => void;
+        trigger: (eventName: string, data?: any) => void;
+    } 
+} 
+`;
+        return content;
+    }
+ public typingContentUse(inputName: string): string {
+        let upperName = this.toUpperCase(inputName); 
+        let lowerName = this.toLowerCase(inputName);
+        
+        var content: string = `  
+import { Extended${upperName} } from './${lowerName}Impl';
+
+var extended${upperName} = new Extended${upperName}();
+/*Event Sample:
+    extended${upperName}.on("event", (data: any) => {
+        console.log("'event' triggered with data: " + data.foo);
+    })
+*/
+//Create a new event, pass test data and print on screen
+
+//Call the trigger and verify that the event is functional:
+//Sample: extended${upperName}.trigger("event", { "foo": "rrr" });
+
+`;
+        return content;
+    }
     public genericContent(inputName: string): string {
         let upperName = this.toUpperCase(inputName);
 
@@ -234,6 +299,50 @@ node ${inputName}.js
 1. Find the bug in ${inputName}.ts and solve it
 2. Compile the file ${inputName}.ts   
 3. node ${inputName}.js
+
+`;
+        return content;
+    }
+      public readmeContentTypings(inputName: string): string {
+
+        var content: string = `
+### Previous step One
+1. npm install -g typescript
+2. tsc -v
+
+###  Previous step Two
+
+#### The following command takes a TypeScript file named ${inputName}.ts and translates it into its JavaScript version ${inputName}.js. If ${inputName}.js already exists it will be overwritten.
+tsc ${inputName}Impl.ts   
+
+#### Will result in separate .js files: ${inputName}.js other.js.
+tsc ${inputName}Use.ts other.ts    
+
+#### Compiles all .ts files in the current folder. Does NOT work recursively.
+tsc *.ts 
+
+#### If you complete StepOne, you can run your simple ${inputName} example by opening up a terminal and running:
+node ${inputName}Use.js
+
+###  Previous step Three
+1. Find the bug in ${inputName}Use.ts and solve it
+2. Compile the file ${inputName}Use.ts   
+3. Run node ${inputName}Use.js
+
+###  Previous step Four
+Learn how to use typescript interfaces
+
+###  Previous step Five
+Using classes for Learn typescript OOP
+
+###  Previous step Six
+Using generics is better than using the any data type
+
+###  Previous step Seven
+Introduces a syntax for exporting and importing modules
+
+### TypeScript declaration files are usually written by hand, but there’s a high chance that the library you need already has a .d.ts. file created by somebody else. 
+Just open the ${inputName}Impl.ts and follow the commented instructions at the end of ${inputName}Use.ts.
 
 `;
         return content;
@@ -399,5 +508,11 @@ node ${inputName}.js
         inputUpperCase = this.camelCase(inputUpperCase);
 
         return inputUpperCase;
+    }
+    private toLowerCase(input: string): string {
+        let inputLowerCase: string;
+        inputLowerCase = input.charAt(0).toLowerCase() + input.slice(1);
+        inputLowerCase = this.camelCase(inputLowerCase); 
+        return inputLowerCase;
     }
 }

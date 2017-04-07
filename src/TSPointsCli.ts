@@ -270,7 +270,49 @@ export class TSPointsCli {
 
     await this.createFiles(loc, files);
   }
-  public generateModuleImportUse  = async (loc: IPath) => {
+  public generateTypingImpl = async (loc: IPath) => {
+    // create an IFiles array including file names and contents
+    var inputlowerCase = loc.fileName;
+    inputlowerCase = inputlowerCase.charAt(0).toLowerCase() + inputlowerCase.slice(1);
+    inputlowerCase = this.camelCase(inputlowerCase);
+    var files: IFiles[] = [
+      {
+        name: path.join(loc.dirPath, `${inputlowerCase}Impl.ts`),
+        content: this.fc.typingContentImpl(loc.fileName)
+      }
+    ];
+
+    await this.createFiles(loc, files);
+  }
+  public generateTypingUse = async (loc: IPath) => {
+    // create an IFiles array including file names and contents
+    var inputlowerCase = loc.fileName;
+    inputlowerCase = inputlowerCase.charAt(0).toLowerCase() + inputlowerCase.slice(1);
+    inputlowerCase = this.camelCase(inputlowerCase);
+    var files: IFiles[] = [
+      {
+        name: path.join(loc.dirPath, `${inputlowerCase}Use.ts`),
+        content: this.fc.typingContentUse(loc.fileName)
+      }
+    ];
+
+    await this.createFiles(loc, files);
+  }
+  public generateTyping = async (loc: IPath) => {
+    // create an IFiles array including file names and contents
+    var inputlowerCase = loc.fileName;
+    inputlowerCase = inputlowerCase.charAt(0).toLowerCase() + inputlowerCase.slice(1);
+    inputlowerCase = this.camelCase(inputlowerCase);
+    var files: IFiles[] = [
+      {
+        name: path.join(loc.dirPath, `${inputlowerCase}.d.ts`),
+        content: this.fc.typingContentDecl(loc.fileName)
+      }
+    ];
+
+    await this.createFiles(loc, files);
+  }
+  public generateModuleImportUse = async (loc: IPath) => {
     // create an IFiles array including file names and contents
     var files: IFiles[] = [
       {
@@ -281,7 +323,7 @@ export class TSPointsCli {
 
     await this.createFiles(loc, files);
   }
-   public generateModule = async (loc: IPath) => {
+  public generateModule = async (loc: IPath) => {
     // create an IFiles array including file names and contents
     var files: IFiles[] = [
       {
@@ -384,7 +426,18 @@ export class TSPointsCli {
 
     await this.createFiles(loc, files);
   }
-   public generateReadmeSeven = async (loc: IPath) => {
+  public generateReadmeEight = async (loc: IPath) => {
+    // create an IFiles array including file names and contents
+    var files: IFiles[] = [
+      {
+        name: path.join(loc.dirPath, `README.md`),
+        content: this.fc.readmeContentTypings(loc.fileName)
+      }
+    ];
+
+    await this.createFiles(loc, files);
+  }
+  public generateReadmeSeven = async (loc: IPath) => {
     // create an IFiles array including file names and contents
     var files: IFiles[] = [
       {
